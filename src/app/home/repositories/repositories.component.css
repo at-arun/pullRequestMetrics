@@ -1,0 +1,40 @@
+.repositoriesContainer {
+    font-size: 12px;
+}
+.table-responsive {
+    height: 470px;
+}
+.avatar {
+    float: right;
+}
+/* User Profile*/
+.profileContainer {
+    height: 50px;
+    border: 1px solid #d2cece;
+    border-radius: 5px;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.profileName {
+    font-size: 1.5em;
+}
+.profileImage {
+    float: right;
+    height: 30px;
+    display: inline;
+}
+
+.paginationContainer {
+    text-align: center;
+}
+
+.loadMore {
+    font-size: 1.2em;
+    border: 1px solid #142273;
+    padding: 5px;
+    cursor: pointer;
+    background-color: #0f5d69eb;
+    color: white;
+    border-radius: 4px;
+}

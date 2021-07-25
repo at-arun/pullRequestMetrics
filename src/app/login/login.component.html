@@ -1,0 +1,37 @@
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+      <!-- Tabs Titles -->
+  
+      <!-- Icon -->
+      <!-- <div class="fadeIn first">
+        <img src="/assets/images/login.png" id="icon" style="text-align: center;" alt="User Icon" />
+      </div> -->
+  
+      <!-- Login Form -->
+      <form name="loginForm" (ngSubmit)="validateUser()">
+        
+        <!-- BASIC AUTH LOGIN _starts-->
+        <div class="basicAuthWrapper" *ngIf="showLoginForm==true">
+          <div class='formTitle'>
+            Login
+          </div>
+          <div class="form-group col-md-12">
+            <!-- <label class="">username</label> -->
+            <input type="text" id="username" class="form-control" name="username" [(ngModel)]="username" placeholder="Username" autocomplete="off" required>
+          </div>
+  
+          <div class="form-group col-md-12">
+            <!-- <label class="">password</label> -->
+            <input type="password" id="password" class="form-control" name="password" [(ngModel)]="password" placeholder="Password" autocomplete="off" required>
+          </div>
+
+          <div class="form-group  col-md-12">
+            <button type="submit" class="btn btn-primary">Login</button>
+          </div>
+        </div>
+        <!-- BASIC AUTH LOGIN _ends-->
+
+      </form>
+
+    </div>
+  </div>

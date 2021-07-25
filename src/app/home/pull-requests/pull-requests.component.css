@@ -1,0 +1,96 @@
+.pullRequestContainer {
+    font-size: 12px;
+    padding-top: 10px;
+}
+.avatar {
+    float: right;
+}
+.disabledLink{
+    color: black;
+    cursor: not-allowed;
+    pointer-events: none;
+    text-decoration: line-through;
+}
+.disabledLink:hover {
+    text-decoration: none;
+}
+
+.paginationContainer {
+    float: right;
+}
+
+.pullRequestPagination {
+    list-style: none;
+    display: flex;
+    padding: 0px;
+}
+.pageList {
+    padding: 4px 6px 4px 6px;
+    background-color: #506975;
+    border: 1px solid #84939a;
+    border-radius: 5px;
+    margin-left: 6px;
+    color: #ffff;
+    font-size: 1.2em;
+    text-align: center;
+    cursor: pointer;
+    width: 27px;
+    height: 26px;
+    line-height: 1.2;
+}
+
+.activePageList {
+    background-color: coral;
+}
+
+.tableToolbar {
+
+}
+
+.filterContainer{
+    text-align: left;
+}
+
+.statusContainer {
+    text-align: center;
+}
+
+.exportContainer {
+    text-align: right;
+    margin-top: 8px;
+}
+.csvExport {
+    border: 1px solid green;
+    padding: 5px;
+    color: black;
+    font-size: 1.1em;
+    border-radius: 4px;
+    background-color: cadetblue;
+    cursor: pointer;
+}
+
+mat-form-field {
+    margin-right: 20px;
+}
+
+.filterButtonContainer {
+    margin-top: 8px;
+}
+
+.hideList {
+    display: none;
+}
+
+.loading-screen-wrapper {
+    z-index: 100000;
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.6);
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.customLink {
+    color: #007bff;
+    cursor: pointer;
+}

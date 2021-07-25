@@ -1,0 +1,29 @@
+ <nav class="navbar navbar-expand-lg navbar-light sticky-top customNavbar">
+    <a class="navbar-brand" routerLink="/home">
+        <!-- <img src="/assets/images/logo-5.png" width="30" height="30" class="d-inline-block align-top" alt=""> -->
+        <span class='titleText'>Code Review Metrics</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="nav navbar-nav ml-auto">
+        <li class="nav-item nav-wrapper">
+          <a class="nav-link" routerLink="/repositories">Home </a>
+        </li>
+        <li class="nav-item profileIcon">
+          <a class="nav-link">
+            <img [src]="userAvatar" class='profileImage'  title="{{userName}}" alt='userImage' [matMenuTriggerFor]="aboveMenu"/>
+          </a>
+          <mat-menu #aboveMenu="matMenu" yPosition="above">
+            <div class="profileIconWrapper">
+              <img src="{{userAvatar}}" class='profileImageLarge' alt='userImage'/>
+              <button mat-menu-item>Hello {{userName}}</button>
+            </div>
+            
+            <button mat-menu-item (click)="openDialog()">Logout</button>
+          </mat-menu>
+        </li>
+      </ul>
+    </div>
+    </nav>

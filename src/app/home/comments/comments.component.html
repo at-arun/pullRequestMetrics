@@ -1,0 +1,31 @@
+<mat-progress-bar mode="indeterminate" *ngIf="showProgress"></mat-progress-bar>
+<mat-card>Pull Requests 
+  <span *ngIf="selectedRepoName">/ {{selectedRepoName | lowercase}} / comments</span>
+</mat-card>
+<div class='tableActionContainer'>
+  <button mat-flat-button class="customAccentBtn backButton" (click)="goBack()">Back</button>
+</div>
+  
+<div class="col-md-12 commentTableContainer" >
+    <table class="table table-striped" *ngIf="commentsData">
+        <caption>{{pullRequestTitle}}</caption>
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Pull Request Id</th>
+            <th scope="col">Comment</th>
+            <th scope="col">Given By</th>
+            <th scope="col">Given On</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let comments of commentsData; let i=index">
+                <td>{{i+1}}</td>
+                <td>{{comments.pullRequestId}}</td>
+                <td>{{comments.comment}}</td>
+                <td>{{comments.givenBy}}</td>
+                <td>{{comments.givenOn | date}}</td>
+            </tr>
+        </tbody>
+    </table>    
+</div>

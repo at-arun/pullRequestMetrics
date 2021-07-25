@@ -1,0 +1,26 @@
+/* You can add global styles to this file, and also import other style files */
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+body {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+html, body { height: 100%; }
+body { 
+    margin: 0; 
+    font-family: Roboto,"Helvetica Neue",sans-serif !important;
+}
+
+
+.customPrimaryBtn {
+    background-color: #4399ea;
+    color: #f3f0ea;
+}
+.customSuccessBtn {
+    background-color: #4399ea;
+    color: #f3f0ea;
+}
+
+.customAccentBtn {
+    background-color: #89b2d2;
+    color: #fffbf2;
+}

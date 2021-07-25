@@ -1,0 +1,115 @@
+<mat-progress-bar mode="indeterminate" *ngIf="showProgress"></mat-progress-bar>
+<mat-card>Pull Requests 
+    <span *ngIf="selectedRepositoryName">/ {{selectedRepositoryName | lowercase}}</span>
+</mat-card>
+
+<div class="col-md-12 pullRequestContainer" >
+    <div class="loading-screen-wrapper" *ngIf="showProgress">
+    </div>
+    <div class='tableToolbar row'>
+        <div class="filterContainer col-md-9 col-sm-9 col-xs-9">
+            <mat-form-field>
+                <mat-label>Month and Year</mat-label>
+                <input matInput [matDatepicker]="dp" [formControl]="date"
+                (dateInput)="addEvent('input', $event)" 
+                (dateChange)="addEvent('change', $event)"
+                >
+                <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+                <mat-datepicker #dp
+                                startView="multi-year"
+                                (yearSelected)="chosenYearHandler($event)"
+                                (monthSelected)="chosenMonthHandler($event, dp)"
+                                panelClass="example-month-picker">
+                </mat-datepicker>
+            </mat-form-field>
+    
+            <mat-form-field>
+                <mat-label>Status</mat-label>
+                    <mat-select [(value)]="selectedPrStatus">
+                    <mat-option *ngFor="let prStatus of pullRequestStatus" [value]="prStatus.value">
+                        {{prStatus.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <button mat-flat-button class="customSuccessBtn"
+                (click) = "filterPullRequest()"
+            >Filter</button>
+
+        </div>
+
+        <div class="exportContainer col-md-3 col-sm-3 col-xs-3">
+            <button mat-flat-button class="customSuccessBtn"
+                (click) = "exportToCsv()"
+                matTooltip="Exports the PRs in this page and its related comments into csv format"
+            >Export</button>
+        </div>
+    </div>
+    
+    <div class="table-responsive">
+        <table id="pullRequestsTable" class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Pull Request Id</th>
+                <th scope="col">Title</th>
+                <th scope="col">Status</th>
+                <th scope="col">Total comments</th>
+                <th scope="col">Created By</th>
+                <th scope="col">Created On</th>
+                <th scope="col">View</th>
+              </tr>
+            </thead>
+            <tbody>
+                 <tr *ngFor="let pullRequest of pullRequestArray; let i=index">
+                    <td>{{i+1}}</td>
+                    <td>{{pullRequest.pullRequestId}}</td>
+                    <td>{{pullRequest.title}}</td>
+                    <td>{{pullRequest.state}}</td>
+                    <td>{{pullRequest.totalComments}}</td>
+                    <td>{{pullRequest.author}} 
+                        <img src="{{pullRequest.authorImage}}" class="avatar" alt="avatar" width="24px">
+                    </td>
+                    <td>{{pullRequest.created | date}}</td>
+                    <td>
+                        <a class = ""
+                            (click) = "setCommentsLinkAndRedirect(selectedRepositoryName, repoSlug, pullRequest.pullRequestId);"
+                            [ngClass]="pullRequest.totalComments == 0 ? 'disabledLink' : 'customLink'"
+                        >view comments</a>
+                    </td>
+                </tr>
+                <tr *ngIf="pullRequestArray.length == 0"><td colspan="8" align="center">No results</td></tr>
+            </tbody>
+        </table>
+        <div class="paginationContainer" *ngIf="totalPages > 1">
+            <ul class="pullRequestPagination">
+                <li class="pageList" 
+                    *ngIf="activePage > 1 && showPageNavs"
+                    (click)="pullNextResult(previousPageLink)">
+                    <span >&lt;</span>
+                </li>
+                <li class="pageList" 
+                    [ngClass]="{
+                        'activePageList' : page.index == activePage ,
+                        'hideList' : !showPageNavs && page.index == -1
+                    }" 
+                    (click)="pullNextResult(page.link)"
+                    *ngFor="let page of pages">
+                    <span 
+                    *ngIf="page.index > 0; else ellipseBlock"
+                    class='PageListNumber' >{{page.index}}</span>
+                    
+                    <ng-template #ellipseBlock>
+                        <span >...</span>
+                    </ng-template>
+                </li>
+                <li class="pageList" 
+                    *ngIf="activePage != totalPages && showPageNavs"
+                    (click)="pullNextResult(nextPageLink)">
+                    <span >&gt;</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+

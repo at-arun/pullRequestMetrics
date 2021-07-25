@@ -1,0 +1,35 @@
+<mat-progress-bar mode="indeterminate" *ngIf="showProgress"></mat-progress-bar>
+<mat-card>Repository List</mat-card>
+
+<div class="col-md-12 repositoriesContainer">
+    <div class="table-responsive">
+        <table class="table table-striped repositoriesTable">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">View</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let repository of allRepositories; let i=index">
+                    <td>{{i+1}}</td>
+                    <td>
+                        {{repository.name}}
+                        <img src="{{repository.avatar}}" class="avatar" alt="avatar" width="24px">
+                    </td>
+                    <td>
+                        <a routerLink="/pull-requests/{{repository.repoSlug}}">view pull requests</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="paginationContainer" *ngIf="is_paginated">
+        <button mat-flat-button class="customSuccessBtn"
+            (click)="nextRepoResult(nextRepoUrl)"
+            matTooltip="Load more repositories"
+        >Load more</button>
+    </div>
+</div>

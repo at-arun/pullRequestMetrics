@@ -1,0 +1,51 @@
+.customNavbar {
+    background-color: white;
+    position: sticky;
+    top: 0px;
+    z-index: 100;
+    box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+}
+.titleText {
+    padding-left: 5px;
+}
+
+.profileImage {
+    width: 21px;
+    vertical-align: top;
+    padding-top: 2px;
+}
+
+.nav-wrapper {
+    width: 5em;
+    text-align: center;
+    margin-right: 2px;
+}
+
+.nav-wrapper:hover {
+    background-color: #e0e0e063;
+    border-radius: 4px;
+}
+
+.profileIcon {
+    cursor: pointer;
+}
+
+.profileImageLarge {
+    text-align: center;
+    width: 30ox;
+    width: 65px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+button:focus {
+    outline: none !important;
+}    
+.dialogueAction {
+    padding-top: 10%;
+}
+
+.floatRight {
+    float: right;
+}
+
